@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { Observable, tap } from 'rxjs';
+import { string } from 'joi';
 
 export interface RegisterPayload {
   name: string;
@@ -114,4 +115,10 @@ export class AuthService {
     localStorage.removeItem(TOKEN_KEY);
     this.router.navigate(['/login']);
   }
+
+  deleteUsuario(id: string, token: string): Observable<void> {
+    return this.http.delete<void>(`${API_URL}/usuarios/${id}`);
+}
+
+  
 }

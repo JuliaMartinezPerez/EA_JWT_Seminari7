@@ -1,3 +1,9 @@
+# Exercici Seminari
+
+S'ha utilitzat ChatGPT per ajudar amb els errors i per aplicar bé el codi afegit del middleware.
+
+S'ha utilitzat el codi d'exemple per a la resta.
+
 # Seminario 7 EA — JWT (Arquitectura Profesional)
 
 ¡Bienvenido al **Seminario 7 de Entornos de Aplicaciones (EA)**! Este proyecto demuestra una implementación avanzada y segura de autenticación mediante **JWT (JSON Web Tokens)** utilizando una arquitectura de **Access y Refresh Tokens**, ahora refactorizada siguiendo principios de diseño profesional (Separación de responsabilidades y Configuración Centralizada).

@@ -27,6 +27,8 @@
       <li *ngFor="let u of usuarios" class="card" style="flex-direction: row; justify-content: start; gap:10px;">
         <span class="name">{{ u.name }}</span>
         <span class="muted">{{ u.email }}</span>
+        <button class="btn small" (click)="delete(u._id, tokenPreview)" style="margin-left: auto;">
+          Eliminar </button>
       </li>
     </ul>
   </div>

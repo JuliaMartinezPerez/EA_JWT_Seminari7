@@ -57,4 +57,20 @@ export class HomeComponent implements OnInit {
       }
     });
   }
+
+delete(id: string, token: string): void {
+  this.authService.deleteUsuario(id, token).subscribe({
+    next: () => {
+      alert(`Eliminar usuario con ID: ${id}`);
+      
+    },
+    error: (err: any) => {
+      console.error('Error al eliminar usuario:', err);
+      const backendMessage = err.error?.message || 'Error desconocido';
+      alert(`No se pudo eliminar: ${backendMessage}`);
+    }
+  });
+  
+  
+}
 }

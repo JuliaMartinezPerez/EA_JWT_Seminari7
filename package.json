@@ -5,6 +5,8 @@
     "main": "src/server.ts",
     "scripts": {
         "start": "node build/server.js",
+        "prestart": "npm run build",
+        "build": "tsc",
         "postinstall": "tsc"
     },
     "author": "",

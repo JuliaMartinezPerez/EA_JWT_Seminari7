@@ -40,7 +40,8 @@ const updateUsuario = async (req: AuthRequest, res: Response, next: NextFunction
     const usuarioId = req.params.usuarioId;
 
     // Protección de recurso: solo puedes actualizarte a ti mismo
-    if (req.user?.id !== usuarioId) {
+    // L'admin SÍ pot actualitzar a altres usuaris
+    if (req.user?.id !== usuarioId && req.user?.role !== 'user') {
         return res.status(403).json({ message: 'No tienes permiso para actualizar a otro usuario' });
     }
 
@@ -57,7 +58,9 @@ const deleteUsuario = async (req: AuthRequest, res: Response, next: NextFunction
     const usuarioId = req.params.usuarioId;
 
     // Protección de recurso: solo puedes borrarte a ti mismo
-    if (req.user?.id !== usuarioId) {
+    // L'admin SÍ pot esborrar a altres usuaris
+
+    if (req.user?.id !== usuarioId && req.user?.role !== 'admin') {
         return res.status(403).json({ message: 'No tienes permiso para borrar a otro usuario' });
     }
 

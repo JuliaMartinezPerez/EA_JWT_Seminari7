@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import jwt from "jsonwebtoken";
 import { verifyAccessToken } from "../utils/jwt";
 import { IJwtPayload } from "../models/JwtPayload";
+import Logging from "../library/Logging";
 
 
 export interface AuthRequest extends Request {
@@ -34,3 +35,17 @@ export const authenticateToken = (
     return res.status(401).json({ message: "Token inválido" });
   }
 };
+
+export const authoriseRoles = (...roles: ('admin' | 'user')[]) => {
+  return (req: AuthRequest, res: Response, next: NextFunction) => {
+    if (!req.user) {
+      return res.status(401).json({ message: "No autenticado" });
+    }
+
+    if (!roles.includes(req.user.role)) {
+      return res.status(403).json({ message: "Acceso denegado" });
+    }
+
+    next();
+  };
+}

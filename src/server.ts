@@ -10,8 +10,25 @@ import usuarioRoutes from './routes/Usuario';
 import authRoutes from './routes/auth';
 import swaggerUi from 'swagger-ui-express';
 import { swaggerSpec } from './swagger';
+import Usuario from './models/Usuario';
 
 const router = express();
+
+//Admin creat
+/*
+const createAdmin = async () => {
+    const admin = new Usuario({
+        name: 'admin',
+        email: 'admin@gmail.com',
+        password: 'admin123',
+        organizacion: '69bd2f85e66ef0fb6a0d3251', // ObjectId de la teva organització
+        role: 'admin',
+    });
+
+    await admin.save();
+};
+createAdmin();
+*/
 
 /** Connect to Mongo */
 mongoose
@@ -73,7 +90,10 @@ const StartServer = () => {
         });
     });
 
-    http.createServer(router).listen(config.server.port, () =>
-        Logging.info(`Server is running on port ${config.server.port}`)
+    http.createServer(router).listen(config.server.port, () => {
+        Logging.info(`Server is running on port ${config.server.port}`),
+        Logging.info(`Swagger is available on http://localhost:${config.server.port}/api`)
+    }
     );
+    
 };
